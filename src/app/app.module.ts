@@ -20,11 +20,12 @@ import { FormsModule } from '@angular/forms';
 import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { DialogContentComponent } from './dialog-content-component/dialog-content-component.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
-  { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
+  { path: '', redirectTo: 'welcome', pathMatch: 'full' },
 ];
 
 @NgModule({
@@ -34,6 +35,7 @@ const appRoutes: Routes = [
     UserLoginFormComponent,
     MovieCardComponent,
     WelcomePageComponent,
+    DialogContentComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
