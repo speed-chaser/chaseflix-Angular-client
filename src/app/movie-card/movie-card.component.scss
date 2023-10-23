@@ -1,0 +1,48 @@
+mat-card {
+  flex: 0 0 auto;
+  width: 300px;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.movie-cards-container {
+  text-align: center;
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 20px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  user-select: none;
+}
+
+.title-container {
+  overflow: hidden;
+  width: 300px; /* or adjust based on your need */
+  text-align: center;
+}
+
+.title {
+  font-size: 23px;
+  white-space: nowrap;
+  position: relative;
+  display: inline-block;
+  left: 0;
+  transition: left 0.5s ease-out;
+}
+
+.title-container.hover-effect:hover .title {
+  left: -100%;
+  transition: left 5s linear;
+}
+
+@keyframes scrolling {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -100%;
+  }
+}

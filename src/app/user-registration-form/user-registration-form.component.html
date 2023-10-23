@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Sign Up Form</mat-card-title>
+    <mat-card-title class="light">Sign Up Form</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <form>
@@ -47,7 +47,12 @@
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button (click)="registerUser()" class="button-profile">
+    <button
+      mat-raised-button
+      (click)="registerUser()"
+      class="button-profile"
+      color="primary"
+    >
       Sign Up
     </button>
   </mat-card-actions></mat-card

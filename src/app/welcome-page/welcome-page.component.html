@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <div class="main-page">
+    <h1 class="masthead">ChaseFlix</h1>
+    <div class="buttons">
+      <button
+        mat-raised-button
+        (click)="openRegistrationDialog()"
+        style="margin-right: 10px"
+        color="primary"
+      >
+        Sign Up
+      </button>
+      <button
+        mat-raised-button
+        (click)="openLoginDialog()"
+        style="margin-right: 10px"
+        color="primary"
+      >
+        Login
+      </button>
+
+      <button mat-raised-button color="primary" (click)="openMoviesDialog()">
+        All Movies
+      </button>
+    </div>
+  </div>
+</html>

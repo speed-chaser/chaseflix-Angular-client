@@ -33,7 +33,7 @@ export class FetchApiDataService {
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .get<any>(apiUrl + '/movies', {
+      .get(apiUrl + '/movies', {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -44,7 +44,7 @@ export class FetchApiDataService {
   getOneMovie(title: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .get<any>(apiUrl + '/movies/' + title, {
+      .get(apiUrl + '/movies/' + title, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -55,7 +55,7 @@ export class FetchApiDataService {
   getOneDirector(name: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .get<any>(apiUrl + '/directors/' + name, {
+      .get(apiUrl + '/directors/' + name, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -66,7 +66,7 @@ export class FetchApiDataService {
   getOneGenre(genre: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .get<any>(apiUrl + '/genres/' + genre, {
+      .get(apiUrl + '/genres/' + genre, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -77,7 +77,7 @@ export class FetchApiDataService {
   getOneUser(username: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .get<any>(apiUrl + '/users/' + username, {
+      .get(apiUrl + '/users/' + username, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -103,7 +103,7 @@ export class FetchApiDataService {
   addFavoriteMovie(username: string, movieID: number): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .post<any>(apiUrl + '/users/' + username + '/movies/' + movieID, {
+      .post(apiUrl + '/users/' + username + '/movies/' + movieID, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -128,7 +128,7 @@ export class FetchApiDataService {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     const token = localStorage.getItem('token');
     return this.http
-      .put<any>(apiUrl + '/users/' + user.Username, updatedUser, {
+      .put(apiUrl + '/users/' + user.Username, updatedUser, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -148,20 +148,26 @@ export class FetchApiDataService {
       .pipe(catchError(this.handleError));
   }
 
-  private extractResponseData(res: Response): any {
-    const body = res.json();
-    return body || {};
+  private extractResponseData<T>(res: T): T {
+    return res;
   }
 
-  private handleError(error: HttpErrorResponse): any {
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage = 'Unknown error!';
+
     if (error.error instanceof ErrorEvent) {
-      console.error('Some error occurred:', error.error.message);
+      // Client-side errors
+      errorMessage = `Error: ${error.error.message}`;
     } else {
-      console.error(
-        `Error Status code ${error.status}, ` + `Error body is: ${error.error}`
-      );
+      // Server-side errors
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
 
-    return throwError('Something bad happened; please try again later.');
+    console.error(errorMessage);
+    return throwError(errorMessage);
+  }
+
+  getData<T>(url: string) {
+    return this.http.get<T>(url).pipe(catchError(this.handleError));
   }
 }
