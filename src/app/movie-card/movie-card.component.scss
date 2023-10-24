@@ -46,3 +46,17 @@ img {
     left: -100%;
   }
 }
+
+mat-card-actions {
+  display: flex;
+}
+
+mat-icon {
+  justify-content: space-between;
+}
+
+/* Define your accent color style */
+.accent-color {
+  background-color: #ff4081; /* Your accent color */
+  color: white;
+}
