@@ -36,6 +36,7 @@ mat-card-actions {
   overflow-x: scroll;
   padding: 0 60px;
   width: calc(100% - 275px);
+  cursor: pointer;
 }
 
 .movie-cards-container:active {
