@@ -5,6 +5,7 @@
     <div class="buttons">
       <button
         mat-raised-button
+        *ngIf="!isLoggedIn()"
         (click)="openRegistrationDialog()"
         style="margin-right: 10px"
         color="primary"
@@ -13,11 +14,29 @@
       </button>
       <button
         mat-raised-button
+        *ngIf="!isLoggedIn()"
         (click)="openLoginDialog()"
         style="margin-right: 10px"
         color="primary"
       >
         Login
+      </button>
+    </div>
+    <div *ngIf="isLoggedIn()" class="body">
+      <h1>
+        Welcome to ChaseFlix! This is a Full-Stack web application I developed
+        entirely by myself. This frontend was made with Angular. If you would
+        like to see my main version that was made using React, Please click
+        below:
+      </h1>
+      <br />
+      <button
+        class="main-button"
+        mat-raised-button
+        (click)="openMainProject()"
+        color="primary"
+      >
+        Main Project
       </button>
     </div>
   </div>

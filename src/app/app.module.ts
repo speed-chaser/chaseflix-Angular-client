@@ -22,6 +22,10 @@ import { UserLoginFormComponent } from './user-login-form/user-login-form.compon
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { DialogContentComponent } from './dialog-content-component/dialog-content-component.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { FooterComponent } from './footer/footer.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -37,6 +41,8 @@ const appRoutes: Routes = [
     MovieCardComponent,
     WelcomePageComponent,
     DialogContentComponent,
+    NavbarComponent,
+    FooterComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -53,6 +59,8 @@ const appRoutes: Routes = [
     MatTooltipModule,
     MatIconModule,
     MatGridListModule,
+    MatDividerModule,
+    MatToolbarModule,
     FormsModule,
   ],
   providers: [],

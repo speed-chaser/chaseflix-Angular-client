@@ -2,9 +2,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
 }
-
+html {
+  height: auto;
+}
 .masthead {
   font-size: 4em;
   font-weight: 700;
@@ -15,4 +16,41 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+.body {
+  width: 44%;
+  text-align: center;
+}
+
+.main-button {
+  text-align: center;
+  width: 140px;
+  height: 60px;
+}
+
+/* Tablet screens */
+@media (max-width: 1024px) {
+  .body {
+    width: 70%;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 768px) {
+  .body {
+    width: 60%;
+  }
+  h1 {
+    font-size: 18px;
+  }
+}
+
+/* Very small mobile screens */
+@media (max-width: 480px) {
+  .body {
+    width: 80%;
+  }
+  h1 {
+    font-size: 16px;
+  }
 }

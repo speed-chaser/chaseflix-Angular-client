@@ -4,19 +4,25 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogContentComponent } from '../dialog-content-component/dialog-content-component.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ViewChild, ElementRef, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
   styleUrls: ['./movie-card.component.scss'],
 })
-export class MovieCardComponent {
+export class MovieCardComponent implements OnInit {
+  @ViewChild('moviesContainer') moviesContainer!: ElementRef;
   movies: any[] = [];
   userFavorites: any[] = [];
+  featuredMovies: any[] = [];
+  rowsOfMovies: any[] = [];
+
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private renderer: Renderer2
   ) {}
 
   ngOnInit(): void {
@@ -32,9 +38,31 @@ export class MovieCardComponent {
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
-      console.log(this.movies);
-      return this.movies;
+      this.featuredMovies = resp.filter(
+        (movie: any) => movie.Featured === true
+      );
+      console.log(this.featuredMovies); // Log to console to verify movies are assigned
     });
+  }
+
+  chunkArray(myArray: any[], chunk_size: number): any[] {
+    var results = [];
+    while (myArray.length) {
+      results.push(myArray.splice(0, chunk_size));
+    }
+    return results;
+  }
+
+  scrollMoviesContainer(direction: string, container: HTMLElement): void {
+    const scrollAmount = 320;
+
+    if (direction === 'left') {
+      container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    } else if (direction === 'right') {
+      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    } else {
+      return;
+    }
   }
 
   getUserFavorites(): void {

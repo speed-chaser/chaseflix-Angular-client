@@ -1,44 +1,125 @@
-<div class="movie-cards-container">
-  <mat-card *ngFor="let movie of movies; let i = index">
-    <mat-dialog-content>
-      <div
-        class="title-container"
-        [ngClass]="{ 'hover-effect': isLongTitle(movie.Title) }"
-      >
-        <mat-card-title class="title" [title]="movie.Title">{{
-          movie.Title
-        }}</mat-card-title>
-      </div>
-      <mat-card-subtitle
-        >Directed by: {{ movie.Director.Name }}</mat-card-subtitle
-      >
-      <img src="{{ movie.ImagePath }}" draggable="false" />
-    </mat-dialog-content>
-    <mat-card-actions>
-      <button
-        mat-button
-        color="primary"
-        (click)="openDialog(movie.Genre.Name, movie.Genre.Description)"
-      >
-        Genre
-      </button>
-      <button
-        mat-button
-        color="primary"
-        (click)="openDialog(movie.Director.Name, movie.Director.Bio)"
-      >
-        Director
-      </button>
-      <button
-        mat-button
-        color="primary"
-        (click)="openDialog('Synopsis', movie.Description)"
-      >
-        Synopsis
-      </button>
-      <mat-icon color="accent" (click)="toggleFavorite(movie._id)">
-        {{ isFavorited(movie._id) ? "favorite" : "favorite_border" }}
-      </mat-icon>
-    </mat-card-actions>
-  </mat-card>
+<div class="body">
+  <h1>Featured Movies</h1>
+  <div class="movie-row" style="position: relative">
+    <div
+      class="scroll-button"
+      (click)="scrollMoviesContainer('left', movieRowContainer)"
+    >
+      <mat-icon>navigate_before</mat-icon>
+    </div>
+
+    <div #movieRowContainer class="movie-cards-container">
+      <mat-card *ngFor="let movie of featuredMovies">
+        <mat-dialog-content>
+          <div
+            class="title-container"
+            [ngClass]="{ 'hover-effect': isLongTitle(movie.Title) }"
+          >
+            <mat-card-title [title]="movie.Title">{{
+              movie.Title
+            }}</mat-card-title>
+          </div>
+          <mat-card-subtitle class="title-container"
+            >Directed by: {{ movie.Director.Name }}</mat-card-subtitle
+          >
+          <img src="{{ movie.ImagePath }}" draggable="false" />
+        </mat-dialog-content>
+        <mat-card-actions>
+          <button
+            mat-button
+            color="primary"
+            (click)="openDialog(movie.Genre.Name, movie.Genre.Description)"
+          >
+            Genre
+          </button>
+          <button
+            mat-button
+            color="primary"
+            (click)="openDialog(movie.Director.Name, movie.Director.Bio)"
+          >
+            Director
+          </button>
+          <button
+            mat-button
+            color="primary"
+            (click)="openDialog('Synopsis', movie.Description)"
+          >
+            Synopsis
+          </button>
+          <mat-icon color="accent" (click)="toggleFavorite(movie._id)">
+            {{ isFavorited(movie._id) ? "favorite" : "favorite_border" }}
+          </mat-icon>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+    <div
+      class="scroll-button"
+      (click)="scrollMoviesContainer('right', movieRowContainer)"
+    >
+      <mat-icon>navigate_next</mat-icon>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <h1>All Movies</h1>
+  <div class="all-movies-row" style="position: relative">
+    <div
+      class="scroll-button"
+      (click)="scrollMoviesContainer('left', allMoviesContainer)"
+    >
+      <mat-icon>navigate_before</mat-icon>
+    </div>
+    <div #allMoviesContainer class="movie-cards-container">
+      <mat-card *ngFor="let movie of movies">
+        <mat-dialog-content>
+          <div
+            class="title-container"
+            [ngClass]="{ 'hover-effect': isLongTitle(movie.Title) }"
+          >
+            <mat-card-title class="title" [title]="movie.Title">{{
+              movie.Title
+            }}</mat-card-title>
+          </div>
+          <mat-card-subtitle class="title-container"
+            >Directed by: {{ movie.Director.Name }}</mat-card-subtitle
+          >
+          <img src="{{ movie.ImagePath }}" draggable="false" />
+        </mat-dialog-content>
+        <mat-card-actions>
+          <button
+            mat-button
+            color="primary"
+            (click)="openDialog(movie.Genre.Name, movie.Genre.Description)"
+          >
+            Genre
+          </button>
+          <button
+            mat-button
+            color="primary"
+            (click)="openDialog(movie.Director.Name, movie.Director.Bio)"
+          >
+            Director
+          </button>
+          <button
+            mat-button
+            color="primary"
+            (click)="openDialog('Synopsis', movie.Description)"
+          >
+            Synopsis
+          </button>
+          <mat-icon color="accent" (click)="toggleFavorite(movie._id)">
+            {{ isFavorited(movie._id) ? "favorite" : "favorite_border" }}
+          </mat-icon>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div
+      class="scroll-button"
+      (click)="scrollMoviesContainer('right', allMoviesContainer)"
+    >
+      <mat-icon>navigate_next</mat-icon>
+    </div>
+  </div>
 </div>

@@ -1,15 +1,83 @@
+h1 {
+  font-size: 40px;
+  margin: 30px 60px;
+}
+
+.movie-collection {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 1%;
+}
 mat-card {
   flex: 0 0 auto;
   width: 300px;
   background: rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+  width: calc(20% - 20px);
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.movie-row,
+.all-movies-row {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  justify-content: center; /* Center align the movie cards */
 }
 
 .movie-cards-container {
-  text-align: center;
+  flex-grow: 1; /* Allows the container to grow and take remaining space */
   display: flex;
-  overflow-x: auto;
+  flex-wrap: nowrap;
   gap: 20px;
-  padding: 20px;
+  overflow-x: scroll;
+  padding: 0 60px;
+  width: calc(100% - 275px);
+}
+
+.movie-cards-container::-webkit-scrollbar {
+  display: none;
+}
+
+.movie-cards-container {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.movie-cards-container {
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.scroll-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 999; /* Ensure it's above the movie cards */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add some shadow */
+}
+
+.scroll-button:hover {
+  background-color: rgba(255, 255, 255, 1); /* Less transparency on hover */
+}
+
+.scroll-button:first-child {
+  left: 0;
+}
+
+.scroll-button:last-child {
+  /* Right button */
+  right: 0;
 }
 
 img {
@@ -20,8 +88,13 @@ img {
 
 .title-container {
   overflow: hidden;
-  width: 300px; /* or adjust based on your need */
   text-align: center;
+  user-select: none;
+}
+
+mat-card-subtitle {
+  text-align: center;
+  user-select: none;
 }
 
 .title {
@@ -38,25 +111,78 @@ img {
   transition: left 5s linear;
 }
 
-@keyframes scrolling {
-  0% {
-    left: 100%;
-  }
-  100% {
-    left: -100%;
-  }
-}
-
-mat-card-actions {
-  display: flex;
-}
-
 mat-icon {
   justify-content: space-between;
 }
 
-/* Define your accent color style */
 .accent-color {
-  background-color: #ff4081; /* Your accent color */
+  background-color: #ff4081;
   color: white;
+}
+@media (max-width: 1450px) {
+  mat-card-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 1115px) {
+  mat-card {
+    width: calc(50% - 20px); /* Show 2 cards side by side */
+  }
+}
+
+/* Tablet screens */
+@media (max-width: 1024px) {
+  mat-card {
+    width: calc(50% - 120px); /* Show 2 cards side by side */
+  }
+  mat-card-actions {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 16px;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 768px) {
+  mat-card {
+    width: calc(100% - 168px);
+  }
+
+  .movie-cards-container {
+    padding: 0 10px;
+  }
+
+  .scroll-button {
+    display: none; /* Hide the scroll buttons on mobile screens */
+  }
+
+  mat-card-actions {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 16px;
+  }
+
+  mat-icon {
+    font-size: 20px;
+  }
+}
+
+/* Very small mobile screens */
+@media (max-width: 480px) {
+  mat-card {
+    width: calc(100% - 20px);
+  }
+
+  h1 {
+    text-align: center;
+  }
+  mat-card-actions {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }

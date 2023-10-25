@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UserLoginFormComponent } from '../user-login-form/user-login-form.component';
 import { UserRegistrationFormComponent } from '../user-registration-form/user-registration-form.component';
 import { MatDialog } from '@angular/material/dialog';
-import { MovieCardComponent } from '../movie-card/movie-card.component';
 
 @Component({
   selector: 'app-welcome-page',
@@ -21,5 +20,11 @@ export class WelcomePageComponent implements OnInit {
     this.dialog.open(UserLoginFormComponent, {
       width: '280px',
     });
+  }
+  openMainProject(): void {
+    window.open('https://chaseflix.netlify.app', '_blank');
+  }
+  isLoggedIn(): boolean {
+    return localStorage.getItem('token') ? true : false;
   }
 }

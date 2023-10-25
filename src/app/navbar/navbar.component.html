@@ -1,0 +1,8 @@
+<mat-toolbar color="primary">
+  <span>ChaseFlix</span>
+  <span class="spacer"></span>
+  <button mat-button (click)="goHome()"><mat-icon>home</mat-icon> Home</button>
+  <button mat-button (click)="goToMovies()">Movies</button>
+  <button mat-button (click)="openContact()">Contact</button>
+  <button mat-button *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
+</mat-toolbar>
