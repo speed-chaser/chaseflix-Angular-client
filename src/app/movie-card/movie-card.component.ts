@@ -41,7 +41,7 @@ export class MovieCardComponent implements OnInit {
       this.featuredMovies = resp.filter(
         (movie: any) => movie.Featured === true
       );
-      console.log(this.featuredMovies); // Log to console to verify movies are assigned
+      console.log(this.featuredMovies);
     });
   }
 
@@ -54,7 +54,7 @@ export class MovieCardComponent implements OnInit {
   }
 
   scrollMoviesContainer(direction: string, container: HTMLElement): void {
-    const scrollAmount = 320;
+    const scrollAmount = 319;
 
     if (direction === 'left') {
       container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
@@ -64,6 +64,32 @@ export class MovieCardComponent implements OnInit {
       return;
     }
   }
+
+  /*--- Click to scroll through movies ---*/
+  scrolling: boolean = false;
+  startX: number = 0;
+  scrollLeft: number = 0;
+
+  startScroll(e: MouseEvent) {
+    this.scrolling = true;
+    this.startX = e.pageX - (e.currentTarget as HTMLElement).offsetLeft;
+    this.scrollLeft = (e.currentTarget as HTMLElement).scrollLeft;
+  }
+
+  stopScroll() {
+    this.scrolling = false;
+  }
+
+  scrollMovies(e: MouseEvent) {
+    if (!this.scrolling) return;
+    e.preventDefault();
+    const x = e.pageX - (e.currentTarget as HTMLElement).offsetLeft;
+
+    const walk = (x - this.startX) * 0.8; // Adjust the multiplier here, smaller values will make the scrolling slower
+    (e.currentTarget as HTMLElement).scrollLeft = this.scrollLeft - walk;
+  }
+
+  /*--- End of click to scroll through movies ---*/
 
   getUserFavorites(): void {
     const user = localStorage.getItem('user');

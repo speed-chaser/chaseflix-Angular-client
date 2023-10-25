@@ -25,17 +25,21 @@ mat-card-actions {
   display: flex;
   align-items: center;
   overflow-x: auto;
-  justify-content: center; /* Center align the movie cards */
+  justify-content: center;
 }
 
 .movie-cards-container {
-  flex-grow: 1; /* Allows the container to grow and take remaining space */
+  flex-grow: 1;
   display: flex;
   flex-wrap: nowrap;
   gap: 20px;
   overflow-x: scroll;
   padding: 0 60px;
   width: calc(100% - 275px);
+}
+
+.movie-cards-container:active {
+  cursor: grabbing;
 }
 
 .movie-cards-container::-webkit-scrollbar {
@@ -55,7 +59,7 @@ mat-card-actions {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -63,12 +67,12 @@ mat-card-actions {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 999; /* Ensure it's above the movie cards */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add some shadow */
+  z-index: 999;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .scroll-button:hover {
-  background-color: rgba(255, 255, 255, 1); /* Less transparency on hover */
+  background-color: rgba(255, 255, 255, 1);
 }
 
 .scroll-button:first-child {
@@ -131,14 +135,14 @@ mat-icon {
 
 @media (max-width: 1115px) {
   mat-card {
-    width: calc(50% - 20px); /* Show 2 cards side by side */
+    width: calc(50% - 20px);
   }
 }
 
 /* Tablet screens */
 @media (max-width: 1024px) {
   mat-card {
-    width: calc(50% - 120px); /* Show 2 cards side by side */
+    width: calc(50% - 120px);
   }
   mat-card-actions {
     flex-direction: row;

@@ -8,7 +8,13 @@
       <mat-icon>navigate_before</mat-icon>
     </div>
 
-    <div #movieRowContainer class="movie-cards-container">
+    <div
+      #movieRowContainer
+      class="movie-cards-container"
+      (mousedown)="startScroll($event)"
+      (mouseup)="stopScroll()"
+      (mousemove)="scrollMovies($event)"
+    >
       <mat-card *ngFor="let movie of featuredMovies">
         <mat-dialog-content>
           <div
@@ -71,7 +77,13 @@
     >
       <mat-icon>navigate_before</mat-icon>
     </div>
-    <div #allMoviesContainer class="movie-cards-container">
+    <div
+      #allMoviesContainer
+      class="movie-cards-container"
+      (mousedown)="startScroll($event)"
+      (mouseup)="stopScroll()"
+      (mousemove)="scrollMovies($event)"
+    >
       <mat-card *ngFor="let movie of movies">
         <mat-dialog-content>
           <div
