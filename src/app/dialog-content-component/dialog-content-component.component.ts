@@ -11,6 +11,9 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
     </mat-dialog-actions>
   `,
 })
+/**
+ * Skeleton for the dialog component written in the MovieCardComponent. This component builds the structure for that dialog popup.
+ */
 export class DialogContentComponent {
   constructor(
     public dialogRef: MatDialogRef<DialogContentComponent>,

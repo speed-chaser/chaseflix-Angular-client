@@ -9,6 +9,10 @@ import { Router } from '@angular/router';
   templateUrl: './user-login-form.component.html',
   styleUrls: ['./user-login-form.component.scss'],
 })
+
+/**
+ * Implements a form that allows users to login to the site
+ */
 export class UserLoginFormComponent implements OnInit {
   @Input() loginData = { Username: '', Password: '' };
 
@@ -21,6 +25,9 @@ export class UserLoginFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  /**
+   * Login method to check login credentials and set their user and token.
+   */
   loginUser(): void {
     this.fetchApiData.userLogin(this.loginData).subscribe(
       (result) => {
