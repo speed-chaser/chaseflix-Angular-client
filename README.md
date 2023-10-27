@@ -1,6 +1,44 @@
-# ChaseflixAngularClient
+# Chaseflix Angular Client
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.
+## Description
+
+Chaseflix is a movie application that provides users with information on various movies, directors, and genres. Users can create profiles to save data about their favorite movies, enhancing their movie-watching experience.
+
+## Key Features
+
+- Display a welcome view where users can log in or register an account.
+- Authenticated users can view all movies.
+- Users can click on a movie to see more details, view director information, and genre details.
+
+## Design Criteria
+
+- Provides information on movies, directors, and genres.
+- Allows users to create a profile and save data about favorite movies.
+
+## Technical Implementations
+
+- Written in Angular (version 9 or later).
+- Requires the latest version of Node.js and npm package.
+- Contains user registration and login forms.
+- Designed using Angular Material.
+- Codebase contains comments using Typedoc.
+- Includes technical documentation.
+
+## Installation
+
+## 1. Clone the repository:
+   ```bash
+   git clone https://github.com/speed-chaser/chaseflix-angular-client.git
+   ```
+
+## 2. Navigate to the project directory:
+   ```bash
+   cd chaseflix-angular-client
+   ```
+## 3. Install dependencies:
+   ```bash
+   npm install
+   ```
 
 ## Development server
 
